@@ -3,6 +3,13 @@
 
 #include <iostream>
 #include <string>
+#include <cstdlib>
+#include <climits>
+#include <cfloat>
+
+#define RED		"\033[31m"
+#define RESET	"\033[0m"
+#define GREEN	"\033[32m"
 
 class ScalarConverter {
 	public:
