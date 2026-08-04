@@ -117,6 +117,18 @@ void	ScalarConverter::convert(const std::string &input) {
 
 		bool	is_pseudo_it = (input == "nan" || input == "+inf" || input == "-inf" || 
 					input == "nanf" || input == "+inff" || input == "-inff");
+					
+		if (input == "nan" || input == "+inf" || input == "-inf" || result < 0 || result > 127)
+			std::cout << "char: " << RED << "impossible" << RESET << std::endl;
+		else if (!isprint(static_cast<char>(result)))
+			std::cout << "char: " << RED << "Non displayable" << RESET << std::endl;
+		else
+			std::cout << "char: '" << GREEN << static_cast<char>(result) << RESET << "'\n";
+
+		if (input == "nan" || input == "+inf" || input == "-inf" || result < INT_MIN || result > INT_MAX)
+			std::cout << "int: " << RED << "impossible" << RESET << std::endl;
+		else
+			std::cout << "int: " << GREEN << static_cast<int>(result) << RESET << std::endl;
 
 		if (result < -FLT_MAX || result > FLT_MAX)
 			std::cout << "float: " << RED << "impossible" << RESET << std::endl;
@@ -127,18 +139,6 @@ void	ScalarConverter::convert(const std::string &input) {
 			std::cout << GREEN << "f" << RESET << std::endl;
 		}
 
-		if (input == "nan" || input == "+inf" || input == "-inf" || result < INT_MIN || result > INT_MAX)
-			std::cout << "int: " << RED << "impossible" << RESET << std::endl;
-		else
-			std::cout << "int: " << GREEN << static_cast<int>(result) << RESET << std::endl;
-
-		if (input == "nan" || input == "+inf" || input == "-inf" || result < 0 || result > 127)
-			std::cout << "char: " << RED << "impossible" << RESET << std::endl;
-		else if (!isprint(static_cast<char>(result)))
-			std::cout << "char: " << RED << "Non displayable" << RESET << std::endl;
-		else
-			std::cout << "char: '" << GREEN << static_cast<char>(result) << RESET << "'\n";
-		
 		std::cout << "double: " << GREEN << result << RESET;
 		if (!is_pseudo_it && result == std::floor(result)) {
 			std::cout << GREEN << ".0" << RESET;
@@ -152,6 +152,18 @@ void	ScalarConverter::convert(const std::string &input) {
 		bool	is_pseudo_it = (input == "nan" || input == "+inf" || input == "-inf" || 
 					input == "nanf" || input == "+inff" || input == "-inff");
 
+		if (input == "nanf" || input == "+inff" || input == "-inff" || result < 0 || result > 127)
+			std::cout << "char: " << RED << "impossible" << RESET << std::endl;
+		else if (!isprint(static_cast<char>(result)))
+			std::cout << "char: " << RED << "Non displayable" << RESET << std::endl;
+		else
+			std::cout << "char: '" << GREEN << static_cast<char>(result) << RESET << "'\n";
+			
+		if (input == "nanf" || input == "+inff" || input == "-inff" || result < INT_MIN || result > INT_MAX)
+			std::cout << "int: " << RED << "impossible" << RESET << std::endl;
+		else
+			std::cout << "int: " << GREEN << static_cast<int>(result) << RESET << std::endl;
+
 		if (result < -FLT_MAX || result > FLT_MAX)
 			std::cout << "float: " << RED << "impossible" << RESET << std::endl;
 		else {
@@ -161,18 +173,6 @@ void	ScalarConverter::convert(const std::string &input) {
 			std::cout << GREEN << "f" << RESET << std::endl;
 		}
 
-		if (input == "nanf" || input == "+inff" || input == "-inff" || result < INT_MIN || result > INT_MAX)
-			std::cout << "int: " << RED << "impossible" << RESET << std::endl;
-		else
-			std::cout << "int: " << GREEN << static_cast<int>(result) << RESET << std::endl;
-
-		if (input == "nanf" || input == "+inff" || input == "-inff" || result < 0 || result > 127)
-			std::cout << "char: " << RED << "impossible" << RESET << std::endl;
-		else if (!isprint(static_cast<char>(result)))
-			std::cout << "char: " << RED << "Non displayable" << RESET << std::endl;
-		else
-			std::cout << "char: '" << GREEN << static_cast<char>(result) << RESET << "'\n";
-		
 		std::cout << "double: " << GREEN << result << RESET;
 		if (!is_pseudo_it && result == std::floor(result)) {
 			std::cout << GREEN << ".0" << RESET;
@@ -185,8 +185,8 @@ void	ScalarConverter::convert(const std::string &input) {
 
 		std::cout << "char: '" << GREEN << result << RESET << "'\n";
 		std::cout << "int: " << GREEN << static_cast<int>(result) << RESET << "\n";
-		std::cout << "float: " << GREEN << static_cast<float>(result) << RESET << ".0f\n"; 
-		std::cout << "double: " << GREEN << static_cast<double>(result) << RESET << ".0\n"; 
+		std::cout << "float: " << GREEN << static_cast<float>(result) << ".0f" << RESET << "\n"; 
+		std::cout << "double: " << GREEN << static_cast<double>(result) << ".0" << RESET << "\n"; 
 	}
 	else
 		std::cout << RED << "Incorrect input" << RESET << std::endl;
