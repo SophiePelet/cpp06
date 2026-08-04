@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include <climits>
 #include <cfloat>
+#include <cmath>
 
 #define RED		"\033[31m"
 #define RESET	"\033[0m"
