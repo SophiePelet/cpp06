@@ -1,5 +1,8 @@
 #include "ScalarConverter.hpp"
 
+/*
+	Constructor/destructor, copy constructor, copy assignment operator
+*/
 ScalarConverter::ScalarConverter() {}
 ScalarConverter::ScalarConverter(const ScalarConverter &other) { (void)other; }
 ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other) {
@@ -8,6 +11,9 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other) {
 }
 ScalarConverter::~ScalarConverter() {}
 
+/*
+	Helper functions
+*/
 bool    IsInt(const std::string &input) {
 	if (input[0] == '+' || input[0] == '-') {
 		for (size_t i = 1; i < input.length(); ++i) {
@@ -89,6 +95,9 @@ bool	isDouble(const std::string &input) {
 		return (false);
 }
 
+/*
+	Member functions
+*/
 void	ScalarConverter::convert(const std::string &input) {
 	if (IsInt(input)) {
 		long int result = std::strtol(input.c_str(), NULL, 10);
